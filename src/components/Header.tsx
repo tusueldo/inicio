@@ -37,6 +37,14 @@ export default function Header() {
 
           <nav className={`sm:flex items-center gap-1 ${menuOpen ? "flex flex-col absolute top-16 left-0 right-0 bg-slate-900 border-b border-slate-800 p-4" : "hidden"}`}>
             <Link
+              to="/sobre-nosotros"
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive("/sobre-nosotros")}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Info className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+              Sobre Nosotros
+            </Link>
+            <Link
               to="/"
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive("/")}`}
               onClick={() => setMenuOpen(false)}
@@ -51,14 +59,6 @@ export default function Header() {
             >
               <BookOpen className="w-4 h-4 inline mr-1.5 -mt-0.5" />
               Noticias
-            </Link>
-            <Link
-              to="/sobre-nosotros"
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive("/sobre-nosotros")}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              <Info className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-              Sobre Nosotros
             </Link>
           </nav>
         </div>

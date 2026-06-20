@@ -328,7 +328,7 @@ export default function CalculatorPage() {
                 {[
                   {
                     id: "taxreturn" as Tool,
-                    label: "Declaración de la Renta",
+                    label: "Renta",
                     desc: "Calcula si te devuelven o tienes que pagar, con todos tus ingresos y deducciones",
                     icon: <FileText className="w-6 h-6" />,
                   },
@@ -409,7 +409,7 @@ export default function CalculatorPage() {
                 <div className="flex items-center gap-2 text-sm text-slate-400">
                   <span className="text-lg">{selectedCountry.flagSvg}</span>
                   {selectedCountry.name} • {
-                    selectedTool === "taxreturn" ? "Declaración de la Renta" :
+                    selectedTool === "taxreturn" ? "Renta" :
                     selectedTool === "irpf" ? getTaxName(selectedCountry.code) : "Sueldo Neto"
                   }
                 </div>

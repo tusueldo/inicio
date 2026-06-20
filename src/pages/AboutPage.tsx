@@ -51,7 +51,7 @@ export default function AboutPage() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40"
             >
               <Calculator className="w-5 h-5" />
-              Calcular mi sueldo
+              Calcular
             </Link>
             <Link
               to="/noticias"
@@ -143,11 +143,14 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Salary Calculator */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 group">
+            <Link
+              to="/calculadora-sueldo-neto"
+              className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer"
+            >
               <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Calculator className="w-7 h-7 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
                 Calculadora de Sueldo Neto
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
@@ -168,14 +171,20 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="mt-4 text-emerald-400 text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                Ver detalles <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
 
             {/* IRPF Calculator */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-teal-500/30 transition-all duration-300 group">
+            <Link
+              to="/calculadora-irpf-isr"
+              className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-teal-500/30 transition-all duration-300 group cursor-pointer"
+            >
               <div className="w-14 h-14 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Landmark className="w-7 h-7 text-teal-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
                 Calculadora de IRPF / ISR
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
@@ -195,15 +204,21 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="mt-4 text-teal-400 text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                Ver detalles <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
 
             {/* Tax Return Calculator */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 group">
+            <Link
+              to="/calculadora-renta"
+              className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer"
+            >
               <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <FileText className="w-7 h-7 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
-                Declaración de la Renta
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                Calculadora de Renta
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Simula tu declaración anual completa: ingresos de todas las fuentes,
@@ -222,7 +237,10 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="mt-4 text-emerald-400 text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                Ver detalles <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -472,7 +490,7 @@ export default function AboutPage() {
               to="/"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40"
             >
-              Calcular mi sueldo neto
+              Calcular
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
