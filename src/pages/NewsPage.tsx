@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { posts } from "../data/posts";
 import { countries, CountryTaxData } from "../data/countries";
@@ -6,9 +6,38 @@ import { BookOpen, Clock, Filter, Tag, ArrowRight } from "lucide-react";
 
 const categories = [...new Set(posts.map((p) => p.category))];
 
+/** Returns a human-readable elapsed-time string, capped at +7 días */
+function formatElapsed(publishTime: number, now: number): string {
+  const diffMs = now - publishTime;
+  if (diffMs < 0) return "ahora mismo";
+
+  const diffMin = Math.floor(diffMs / 60_000);
+  const MAX_MINS = 7 * 24 * 60; // 7 days
+
+  if (diffMin >= MAX_MINS) return "+7 días";
+  if (diffMin < 1) return "ahora mismo";
+  if (diffMin === 1) return "hace 1 minuto";
+  if (diffMin < 60) return `hace ${diffMin} minutos`;
+
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours === 1) return "hace 1 hora";
+  if (diffHours < 24) return `hace ${diffHours} horas`;
+
+  const diffDays = Math.floor(diffHours / 24);
+  if (diffDays === 1) return "hace 1 día";
+  return `hace ${diffDays} días`;
+}
+
 export default function NewsPage() {
   const [countryFilter, setCountryFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [now, setNow] = useState(Date.now());
+
+  // Update "now" every 30 seconds for real-time elapsed display
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 30_000);
+    return () => clearInterval(timer);
+  }, []);
 
   const filtered = useMemo(() => {
     return posts.filter((p) => {
@@ -105,6 +134,7 @@ export default function NewsPage() {
           <div className="grid md:grid-cols-2 gap-4">
             {filtered.map((post) => {
               const country = getCountry(post.country);
+              const elapsed = formatElapsed(post.publishTime, now);
               return (
                 <Link
                   key={post.id}
@@ -141,16 +171,13 @@ export default function NewsPage() {
 
                     <div className="flex items-center justify-between text-xs text-slate-500">
                       <div className="flex items-center gap-3">
-                        <span>
-                          {new Date(post.date).toLocaleDateString("es-ES", {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          })}
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-800 rounded-full text-slate-400">
+                          <Clock className="w-3 h-3 text-teal-500" />
+                          {elapsed}
                         </span>
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime} min
+                          <BookOpen className="w-3 h-3" />
+                          {post.readTime} min lectura
                         </span>
                       </div>
                       <span className="text-teal-400 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">

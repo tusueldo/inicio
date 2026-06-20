@@ -111,10 +111,11 @@ export default function ResultsDisplay({ country, result, input, showIRPFBreakdo
           </style>
         </head>
         <body>
-          <h1>TuSueldo - Cálculo de ${getTaxName()}</h1>
+          <h1>TuSueldo - Cálculo de Sueldo Neto</h1>
           <div class="meta">
             <p><strong>País:</strong> ${country.flagSvg} ${country.name}</p>
-            <p><strong>Impuesto:</strong> ${getTaxName()} (${getTaxAuthority()})</p>
+            <p><strong>Cálculo:</strong> Sueldo Neto Mensual y Anual</p>
+            <p><strong>Impuesto aplicado:</strong> ${getTaxName()} (${getTaxAuthority()})</p>
             ${input ? `<p><strong>Tipo de trabajador:</strong> ${input.workerType === "empleado" ? "Por cuenta ajena" : input.workerType === "autonomo" ? "Autónomo" : "Funcionario"}</p>` : ""}
             ${input?.familyEnabled ? `<p><strong>Situación familiar:</strong> ${input.civilStatus === "soltero" ? "Soltero/a" : input.civilStatus === "casado" ? "Casado/a" : input.civilStatus === "pareja_hecho" ? "Pareja de hecho" : input.civilStatus === "separado" ? "Separado/a" : "Viudo/a"}${input.numChildren > 0 ? `, ${input.numChildren} hijo${input.numChildren > 1 ? "s" : ""}` : ""}</p>` : ""}
             <p><strong>Fecha:</strong> ${new Date().toLocaleDateString("es-ES")}</p>

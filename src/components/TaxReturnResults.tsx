@@ -105,10 +105,10 @@ export default function TaxReturnResults({ country, result }: Props) {
           </style>
         </head>
         <body>
-          <h1>Resultado de la Declaración ${getTaxName()}</h1>
+          <h1>Resultado de la Declaración de la Renta</h1>
           <div class="meta">
             <p><strong>País:</strong> ${country.flagSvg} ${country.name}</p>
-            <p><strong>Administración:</strong> ${getTaxAuthority()}</p>
+            <p><strong>Impuesto:</strong> ${getTaxName()} (${getTaxAuthority()})</p>
             <p><strong>Fecha cálculo:</strong> ${new Date().toLocaleDateString("es-ES")}</p>
           </div>
 
