@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { posts } from "../data/posts";
 import { countries } from "../data/countries";
 import { ArrowLeft, Clock, Tag, Share2 } from "lucide-react";
+import { FlagImage } from "../utils/FlagUtils";
 
 export default function ArticlePage() {
   const { id } = useParams<{ id: string }>();
@@ -48,7 +49,7 @@ export default function ArticlePage() {
         <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 sm:p-8 lg:p-10">
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="text-lg">{country?.flagSvg}</span>
+            <FlagImage country={country!} className="w-5 h-3 rounded-sm flex-shrink-0" />
             <span className="text-slate-400 text-sm">{country?.name}</span>
             <span className="text-slate-700">|</span>
             <span className="inline-flex items-center gap-1 px-3 py-1 bg-teal-500/10 text-teal-400 text-xs rounded-full">

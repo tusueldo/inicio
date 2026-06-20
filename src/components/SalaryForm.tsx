@@ -10,6 +10,7 @@ import {
   calculateSalary,
   SalaryResult,
 } from "../data/countries";
+import { FlagImage } from "../utils/FlagUtils";
 import {
   Globe,
   DollarSign,
@@ -193,7 +194,7 @@ export default function SalaryForm({ country, onCalculate }: Props) {
     <div className="space-y-4">
       {/* Country badge */}
       <div className="flex items-center gap-3 pb-3 border-b border-slate-700">
-        <span className="text-3xl">{country.flagSvg}</span>
+        <FlagImage country={country} className="w-10 h-7 rounded shadow-sm object-cover" />
         <div>
           <p className="text-white font-semibold text-lg">{country.name}</p>
           <p className="text-slate-400 text-sm">

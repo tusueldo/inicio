@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { posts } from "../data/posts";
 import { countries, CountryTaxData } from "../data/countries";
 import { BookOpen, Clock, Filter, Tag, ArrowRight } from "lucide-react";
+import { FlagImage } from "../utils/FlagUtils";
 
 const categories = [...new Set(posts.map((p) => p.category))];
 
@@ -150,7 +151,7 @@ export default function NewsPage() {
                   </div>
                   <div className="p-5 flex-1 flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-lg">{country?.flagSvg}</span>
+                      <FlagImage country={country!} className="w-5 h-3 rounded-sm flex-shrink-0" />
                       <span className="text-xs text-slate-500">
                         {country?.name}
                       </span>

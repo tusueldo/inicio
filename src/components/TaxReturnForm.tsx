@@ -7,6 +7,7 @@ import {
   DisabilityLevel,
   formatCurrency,
 } from "../data/countries";
+import { FlagImage } from "../utils/FlagUtils";
 import {
   DollarSign,
   Briefcase,
@@ -381,7 +382,7 @@ export default function TaxReturnForm({ country, onCalculate }: Props) {
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center gap-3 pb-3 border-b border-slate-700">
-        <span className="text-3xl">{country.flagSvg}</span>
+        <FlagImage country={country} className="w-10 h-7 rounded shadow-sm object-cover" />
         <div className="flex-1">
           <p className="text-white font-semibold text-lg">{country.name}</p>
           <p className="text-teal-400 text-sm font-medium">{getTaxName()}</p>

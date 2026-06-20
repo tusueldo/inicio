@@ -15,6 +15,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { countries } from "../data/countries";
+import { FlagImage } from "../utils/FlagUtils";
 
 export default function AboutPage() {
   return (
@@ -316,7 +317,9 @@ export default function AboutPage() {
                 to="/"
                 className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 hover:border-emerald-500/30 hover:bg-slate-900 transition-all duration-300 text-center group"
               >
-                <div className="text-2xl mb-2">{country.flagSvg}</div>
+                <div className="flex justify-center mb-2.5">
+                  <FlagImage country={country} className="w-8 h-5 rounded shadow-sm object-cover" />
+                </div>
                 <div className="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors">
                   {country.name}
                 </div>

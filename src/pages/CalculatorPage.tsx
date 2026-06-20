@@ -16,6 +16,7 @@ import {
   Landmark,
   FileText,
 } from "lucide-react";
+import { FlagImage } from "../utils/FlagUtils";
 import { SalaryResult, CalculationInput } from "../data/countries";
 
 type Step = 1 | 2 | 3;
@@ -248,7 +249,7 @@ export default function CalculatorPage() {
                     className="flex-1 bg-transparent text-white placeholder-slate-500 focus:outline-none text-lg"
                   />
                   {selectedCountry && (
-                    <span className="text-xl flex-shrink-0">{selectedCountry.flagSvg}</span>
+                    <FlagImage country={selectedCountry} className="w-5 h-3.5 flex-shrink-0 rounded-sm" />
                   )}
                   <ChevronDown
                     className={`w-4 h-4 text-slate-500 transition-transform flex-shrink-0 ${
@@ -275,7 +276,7 @@ export default function CalculatorPage() {
                               : ""
                           }`}
                         >
-                          <span className="text-2xl">{country.flagSvg}</span>
+                          <FlagImage country={country} className="w-6 h-4 rounded-sm flex-shrink-0 object-cover" />
                           <div className="flex-1">
                             <p className="text-white font-medium">{country.name}</p>
                             <p className="text-slate-500 text-xs">
@@ -316,8 +317,8 @@ export default function CalculatorPage() {
           {step === 2 && (
             <div className="animate-fade-in">
               <div className="text-center mb-8">
-                <p className="text-slate-400 text-sm mb-1">
-                  {selectedCountry?.flagSvg} {selectedCountry?.name}
+                <p className="text-slate-400 text-sm mb-1 flex items-center justify-center gap-1.5">
+                  <FlagImage country={selectedCountry!} className="w-4 h-2.5 rounded-sm" /> {selectedCountry?.name}
                 </p>
                 <h2 className="text-3xl font-bold text-white">
                   ¿Qué quieres calcular?
@@ -406,8 +407,8 @@ export default function CalculatorPage() {
                   <ArrowLeft className="w-4 h-4" />
                   Volver
                 </button>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <span className="text-lg">{selectedCountry.flagSvg}</span>
+                 <div className="flex items-center gap-2 text-sm text-slate-400">
+                  <FlagImage country={selectedCountry} className="w-5 h-3.5 rounded-sm" />
                   {selectedCountry.name} • {
                     selectedTool === "taxreturn" ? "Renta" :
                     selectedTool === "irpf" ? getTaxName(selectedCountry.code) : "Sueldo Neto"
