@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { DollarSign, BookOpen, Menu, X } from "lucide-react";
+import { DollarSign, BookOpen, Menu, X, Info } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -50,7 +50,15 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             >
               <BookOpen className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-              Noticias Económicas
+              Noticias
+            </Link>
+            <Link
+              to="/sobre-nosotros"
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive("/sobre-nosotros")}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Info className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+              Sobre Nosotros
             </Link>
           </nav>
         </div>
